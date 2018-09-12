@@ -1,0 +1,17 @@
+version: '3'
+services:
+  webapp:
+    build: ./web
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+      - redis
+  db:
+    image: mysql
+    command: --default-authentication-plugin=mysql_native_password
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: example
+  redis:
+    image: redis
