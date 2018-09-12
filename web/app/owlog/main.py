@@ -6,7 +6,7 @@ app = Sanic()
 
 @app.route('/')
 async def test(request):
-    return json({'hello': 'world'})
+    return json({'hello': 'hogehoge'})
 
 
 if __name__ == '__main__':
