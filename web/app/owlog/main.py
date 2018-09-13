@@ -1,12 +1,4 @@
-from sanic import Sanic
-from sanic.response import json
-
-app = Sanic()
-
-
-@app.route('/')
-async def test(request):
-    return json({'hello': 'hogehoge'})
+from app import app
 
 
 if __name__ == '__main__':

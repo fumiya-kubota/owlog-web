@@ -1,4 +1,17 @@
 version: '3'
 services:
-  mysql:
+  db:
     image: mysql
+    command: --default-authentication-plugin=mysql_native_password
+    restart: always
+    environment:
+      MYSQL_ALLOW_EMPTY_PASSWORD: 'yes'
+      MYSQL_DATABASE: owlog
+    volumes:
+      - ./db/my.cnf:/etc/mysql/conf.d/my.cnf
+    ports:
+      - '13306:3306'
+  redis:
+    image: redis
+    ports:
+      - '16379:6379'
