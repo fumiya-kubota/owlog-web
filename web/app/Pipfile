@@ -5,10 +5,9 @@ name = "pypi"
 
 [packages]
 sanic = "*"
-aiomysql = "*"
-sqlalchemy = "*"
 alembic = "*"
 passlib = "*"
+gino = "*"
 
 [dev-packages]
 tox = "*"

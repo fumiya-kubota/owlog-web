@@ -1,10 +1,12 @@
 from sanic import Blueprint
-from sanic.response import json
-
+from sanic import response
 
 user = Blueprint('users', url_prefix='/users')
 
 
-@user.route('/')
+@user.route('/', methods=['POST', 'GET'])
 async def test(request):
-    return json({'hello': 'api'})
+    return response.json(
+        {'access_token': ''},
+        status=200
+    )

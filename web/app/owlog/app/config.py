@@ -8,13 +8,13 @@ class BaseConfig:
 
 
 class DevelopmentConfig(BaseConfig):
-    DATABASE_URI = 'mysql+pymysql://root@127.0.0.1:13306/owlog?charset=utf8mb4'
+    DATABASE_URI = 'postgresql://root@127.0.0.1:13306/owlog?charset=utf8mb4'
     REDIS_HOST = '127.0.0.1'
     REDIS_PORT = 16379
 
 
 class ProductionConfig(BaseConfig):
-    DATABASE_URI = 'mysql+pymysql://root@db:3306/owlog?charset=utf8mb4'
+    DATABASE_URI = 'postgresql://root@db:3306/owlog?charset=utf8mb4'
     REDIS_HOST = 'redis'
     REDIS_PORT = 6379
 

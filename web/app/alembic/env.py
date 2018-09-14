@@ -4,7 +4,7 @@ from sqlalchemy import engine_from_config, pool
 from logging.config import fileConfig
 import sys
 sys.path.append('.')
-from owlog.app.model.base import Base # noqa
+from owlog.app.model.db import db # noqa
 
 # this is the Alembic Config object, which provides
 # access to the values within the .ini file in use.
@@ -19,7 +19,7 @@ fileConfig(config.config_file_name)
 # from myapp import mymodel
 # target_metadata = mymodel.Base.metadata
 
-target_metadata = Base.metadata
+target_metadata = db.Model.__metadata__
 
 # other values from the config, defined by the needs of env.py,
 # can be acquired:
