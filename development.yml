@@ -4,12 +4,11 @@ services:
     image: postgres:alpine
     restart: always
     environment:
-      POSTGRES_PASSWORD: 'password'
-      MYSQL_DATABASE: owlog
+      POSTGRES_USER: 'owlog'
     volumes:
       - ./db/my.cnf:/etc/mysql/conf.d/my.cnf
     ports:
-      - '13306:3306'
+      - '5432:5432'
   redis:
     image: redis
     ports:

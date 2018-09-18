@@ -8,11 +8,14 @@ sanic = "*"
 alembic = "*"
 passlib = "*"
 gino = "*"
+asyncpg = "*"
+"psycopg2" = "*"
 
 [dev-packages]
 tox = "*"
 "flake8" = "*"
 mypy = "*"
+pytest-sanic = "*"
 
 [requires]
 python_version = "3.7"
