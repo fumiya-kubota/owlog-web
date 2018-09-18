@@ -21,7 +21,9 @@ class ProductionConfig(BaseConfig):
     REDIS_PORT = 6379
 
 class TestingConfig(BaseConfig):
-    DATABASE_SERVER = 'postgresql+asyncpg://owlog@127.0.0.1:5432'
+    DATABASE_PROTOCOL = 'postgresql+asyncpg'
+    DATABASE_URI = 'owlog@127.0.0.1:5432'
+    DATABASE_SERVER = f'{DATABASE_PROTOCOL}://{DATABASE_URI}'
     DATABASE_NAME = 'owlog_testing'
     REDIS_HOST = 'redis'
     REDIS_PORT = 6379

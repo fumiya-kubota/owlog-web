@@ -23,12 +23,14 @@ def sanic_server(loop, app, test_server):
 @pytest.fixture(scope='module')
 def db_setup():
     testing_config = TestingConfig()
-    server = testing_config.DATABASE_SERVER
+    server = testing_config.DATABASE_URI
     database_name = testing_config.DATABASE_NAME
-    engine = create_engine(server)
+    engine = create_engine(f'postgresql://{server}')
     conn = engine.connect()
     conn.execute(f'DROP DATABASE IF EXISTS {database_name}')
+    conn.commit()
     conn.execute(f'CREATE DATABASE IF NOT EXISTS {database_name}')
+    conn.commit()
     rv = create_engine(f'{server}/{database_name}')
 
     db.create_all(rv)
