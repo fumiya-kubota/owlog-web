@@ -29,7 +29,6 @@ class TestingConfig(BaseConfig):
     REDIS_PORT = 6379
 
 
-
 def get_configuration_object():
     config_name = os.getenv('OWLOG_CONFIGRATION')
     config = {

@@ -2,9 +2,6 @@ import pytest
 from owlog.app import create_app
 from owlog.app.config import TestingConfig
 from sqlalchemy import create_engine
-from sqlalchemy.orm import sessionmaker
-from alembic.command import upgrade as alembic_upgrade
-from alembic.config import Config as AlembicConfig
 from owlog.app.model import db
 
 
@@ -27,11 +24,11 @@ def db_setup():
     database_name = testing_config.DATABASE_NAME
     engine = create_engine(f'postgresql://{server}')
     conn = engine.connect()
-    conn.execute(f'DROP DATABASE IF EXISTS {database_name}')
-    conn.commit()
-    conn.execute(f'CREATE DATABASE IF NOT EXISTS {database_name}')
-    conn.commit()
-    rv = create_engine(f'{server}/{database_name}')
+    try:
+        conn.execution_options(isolation_level="AUTOCOMMIT").execute(f"CREATE DATABASE {database_name}")
+    except Exception:
+        pass
+    rv = create_engine(f'postgresql://{server}/{database_name}')
 
     db.create_all(rv)
     yield rv
